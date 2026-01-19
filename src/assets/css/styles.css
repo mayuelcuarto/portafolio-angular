@@ -185,7 +185,7 @@ form input[type="text"],
 form input[type="number"],
 form input[type="email"],
 form textarea{
-    width: 80%;
+    width: 40%;
     padding: 5px;
 }
 
@@ -205,4 +205,17 @@ form button:hover,
 form input[type="submit"]:hover{
     background: rgba(53, 103, 164, 0.8);
     border: 1px solid rgba(13, 67, 133, 1);
+}
+
+form input[disabled]{
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.form_error{
+    font-size: 13px;
+    padding: 3px;
+    background: red;
+    color: white;
+    margin-left: 5px;
 }
