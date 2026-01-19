@@ -19,4 +19,11 @@ export class ProjectService {
   testService(){
     return 'Probando el servicio de angular';
   }
+
+  saveProject(project: Project): Observable<any>{
+    let params = JSON.stringify(project);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this._http.post(this.url+'save-project', params, {headers: headers});
+  }
 }

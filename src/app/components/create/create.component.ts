@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Form, FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project.service';
 
@@ -21,7 +21,8 @@ export class CreateComponent {
     year: 2025,
     langs: '',
     image: ''
-  }
+  };
+  public status?: string;
    
   constructor(
     private _projectService: ProjectService
@@ -29,7 +30,19 @@ export class CreateComponent {
     this.title = "Crear Proyecto";
   }
 
-  onSubmit(form?:Form){
-    console.log(this.project);
+  onSubmit(form: NgForm){
+    this._projectService.saveProject(this.project).subscribe(
+      response => {
+        if(response.project){
+          this.status = 'success';
+          form.reset();
+        }else{
+          this.status = 'failed';
+        }
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
   }
 }
