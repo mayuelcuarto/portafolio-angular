@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project.service';
+import { UploadService } from '../../services/upload.service';
+import { Global } from '../../services/global';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +11,7 @@ import { ProjectService } from '../../services/project.service';
   imports: [FormsModule],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css',
-  providers: [ProjectService]
+  providers: [ProjectService, UploadService]
 })
 export class CreateComponent {
   public title?: string;
@@ -23,26 +25,39 @@ export class CreateComponent {
     image: ''
   };
   public status?: string;
+  public filesToUpload: Array<File> = [];
    
   constructor(
-    private _projectService: ProjectService
+    private _projectService: ProjectService,
+    private _uploadService: UploadService
   ) {
     this.title = "Crear Proyecto";
   }
 
   onSubmit(form: NgForm){
-    this._projectService.saveProject(this.project).subscribe(
-      response => {
-        if(response.project){
-          this.status = 'success';
-          form.reset();
-        }else{
+    // Guardar datos basicos
+    this._projectService.saveProject(this.project).subscribe({
+      next: (response) => {
+        if (response.project) {
+          // Subir la imagen
+          this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
+          .then((result:any) => {
+            this.status = 'success';
+            console.log(result);
+            form.reset();
+          });
+        } else {
           this.status = 'failed';
         }
       },
-      error => {
-        console.log(<any>error)
+      error: (err) => {
+        console.error(err);
+        this.status = 'failed';
       }
-    )
+    });
+  }
+
+  fileChangeEvent(fielInput:any){
+    this.filesToUpload = <Array<File>>fielInput.target.files;
   }
 }
