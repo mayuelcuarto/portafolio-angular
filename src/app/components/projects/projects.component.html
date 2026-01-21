@@ -1,1 +1,11 @@
-<p>projects works!</p>
+<div class="container">
+    <h2>Proyectos</h2>
+    <ul>
+        @for (project of projects; track project._id) {
+            <li>
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.langs }}</p>
+            </li>
+        }
+    </ul>
+</div>
