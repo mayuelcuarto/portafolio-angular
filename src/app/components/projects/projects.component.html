@@ -2,7 +2,12 @@
     <h2>Proyectos</h2>
     <ul>
         @for (project of projects; track project._id) {
-            <li>
+            <li class="project">
+                <div class="image">
+                @if(project.image){
+                    <img src="{{ url+'get-image/'+project.image }}"/>
+                }
+                </div>
                 <h3>{{ project.name }}</h3>
                 <p>{{ project.langs }}</p>
             </li>
