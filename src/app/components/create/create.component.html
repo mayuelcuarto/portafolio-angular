@@ -1,9 +1,9 @@
 <div class="container">
     <h2>{{ title }}</h2>
 
-    @if (status == 'success'){
+    @if (status == 'success' && saveProject){
         <div class="message success">
-            El proyecto se ha creado correctamente, puedes verlo <a href="#">aquí</a>.
+            El proyecto se ha creado correctamente, puedes verlo <a [routerLink]="['/proyecto', saveProject._id]">aquí</a>.
         </div>
     }
     

@@ -3,6 +3,7 @@
     <ul>
         @for (project of projects; track project._id) {
             <li class="project">
+                <a [routerLink]="['/proyecto', project._id]">
                 <div class="image">
                 @if(project.image){
                     <img src="{{ url+'get-image/'+project.image }}"/>
@@ -10,6 +11,7 @@
                 </div>
                 <h3>{{ project.name }}</h3>
                 <p>{{ project.langs }}</p>
+                </a>
             </li>
         }
     </ul>
