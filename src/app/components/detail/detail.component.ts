@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models/project';
 import { ProjectService } from '../../services/project.service';
 import { Global } from '../../services/global';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { response } from 'express';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
   providers: [ProjectService]
