@@ -1,8 +1,10 @@
 <div class="container">
     @if(project){
-        <div class="image">
-            <img src="{{ url+'get-image/'+project.image }}"/>
-        </div>
+        @if(project.image){
+            <div class="image">
+                <img src="{{ url+'get-image/'+project.image }}"/>
+            </div>
+        }
         <div class="data">
             <h1>{{ project.name }}</h1>
             <h3>{{ project.description }}</h3>

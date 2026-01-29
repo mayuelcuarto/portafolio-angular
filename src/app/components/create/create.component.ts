@@ -42,12 +42,18 @@ export class CreateComponent {
       next: (response) => {
         if (response.project) {
           // Subir la imagen
-          this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
-          .then((result:any) => {
+          if(this.filesToUpload.length >= 1){
+            this._uploadService.makeFileRequest(Global.url+"upload-image/"+response.project._id, [], this.filesToUpload, 'image')
+            .then((result:any) => {
+              this.status = 'success';
+              this.saveProject = result.project;
+              form.reset();
+            });
+          }else{
             this.status = 'success';
-            this.saveProject = result.project;
-            form.reset();
-          });
+              this.saveProject = response.project;
+              form.reset();
+          }
         } else {
           this.status = 'failed';
         }
