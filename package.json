@@ -28,8 +28,8 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular/build": "^20.3.27",
-    "@angular/cli": "^20.3.27",
+    "@angular/build": "^20.3.33",
+    "@angular/cli": "^20.3.33",
     "@angular/compiler-cli": "^20.3.27",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
@@ -43,10 +43,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.8.3"
   },
-  "overrides": {
-    "@modelcontextprotocol/sdk": ">=1.26.0",
-    "qs": ">=6.15.2",
-    "@isaacs/brace-expansion": "^5.0.1"
-  },
+
   "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1"
 }
