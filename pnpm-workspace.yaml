@@ -8,7 +8,7 @@ overrides:
   '@modelcontextprotocol/sdk': '>=1.26.0'
   qs: '>=6.16.0'
   '@isaacs/brace-expansion': '^5.0.1'
-  hono: '>=4.12.34'
+  hono: '>=4.13.5'
   undici: '>=6.28.0'
   ip-address: '>=10.2.1'
   tar: '>=7.5.21'
