@@ -25,3 +25,4 @@ overrides:
   vite: '>=7.3.7'
   'body-parser': '>=2.4.0'
   zod: '>=4.6.6'
+  undicy: '>=8.12.2'
